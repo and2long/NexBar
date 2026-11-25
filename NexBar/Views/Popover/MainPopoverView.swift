@@ -63,9 +63,10 @@ struct MainPopoverView: View {
     private func headerBar(selectedTab: Binding<PopoverTab>) -> some View {
         HStack(spacing: 10) {
             HStack(spacing: 6) {
-                Image(systemName: "gauge.with.dots.needle.67percent")
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(.tint)
+                Image("BrandLogo")
+                    .resizable()
+                    .interpolation(.high)
+                    .frame(width: 20, height: 20)
                 Text("NexBar")
                     .font(.system(size: 13, weight: .semibold))
             }
