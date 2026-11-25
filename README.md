@@ -47,50 +47,6 @@
 
 ---
 
-## GitHub Actions 自动打包与发布 DMG
-
-仓库已内置两个工作流（运行在 `xcode-27` Apple Silicon Runner）：
-
-- **持续集成**：[`.github/workflows/ci.yml`](.github/workflows/ci.yml)
-  - 推送或提交 PR 到 `main` 时自动运行核心单元测试并校验 Release 编译。
-- **打包并发布 DMG**：[`.github/workflows/release.yml`](.github/workflows/release.yml)
-  - **方式一（推荐）：推送版本标签自动发版**
-    ```bash
-    git tag v1.0.0
-    git push origin v1.0.0
-    ```
-    Actions 将自动执行单元测试 → Release 编译 → Ad-hoc 签名 → 打包 `NexBar-1.0.0-arm64.dmg` 与 `.sha256` 校验文件 → 自动创建对应的 GitHub Release 并上传附件。
-  - **方式二：手动触发打包**
-    - 在 GitHub 仓库的 **Actions → Release DMG → Run workflow** 中手动运行，可在 Artifacts 中直接下载生成的 `.dmg`（勾选 `publish_release` 可同时发布 Release）。
-
----
-
-## 本地开发与打包
-
-### 1. 使用 Xcode 运行
-直接打开 `NexBar.xcodeproj`，选择 `NexBar` scheme 按 `⌘R` 运行。
-
-### 2. 运行核心单元测试
-```bash
-swiftc -parse-as-library -target arm64-apple-macosx14.0 \
-  NexBar/Models/SystemMetrics.swift \
-  NexBar/Models/CleanupModels.swift \
-  NexBar/Services/ByteRateFormatter.swift \
-  NexBar/Services/CPUSampler.swift \
-  NexBar/Services/NetworkSampler.swift \
-  NexBar/Services/DiskCleanerEngine.swift \
-  Tests/NexBarCoreTests.swift \
-  -o /tmp/NexBarCoreTests && /tmp/NexBarCoreTests && rm -f /tmp/NexBarCoreTests
-```
-
-### 3. 本地一键打包 DMG
-```bash
-./scripts/package-dmg.sh --version 1.0.0
-```
-产物输出至 `dist/NexBar-1.0.0-arm64.dmg` 与 `dist/NexBar-1.0.0-arm64.dmg.sha256`。
-
----
-
 ## 目录结构
 
 ```text
