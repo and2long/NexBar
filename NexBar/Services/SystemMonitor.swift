@@ -85,4 +85,25 @@ final class SystemMonitor {
             self?.disk = snapshot
         }
     }
+
+    #if DEBUG
+    func applyPreviewSnapshot(
+        cpu: CPUSample,
+        network: NetworkSample,
+        disk: DiskSpaceSnapshot,
+        cpuPoints: [Double],
+        downloadPoints: [Double],
+        uploadPoints: [Double]
+    ) {
+        self.cpu = cpu
+        self.network = network
+        self.disk = disk
+        self.cpuHistory = RingBuffer<Double>(capacity: 60)
+        for p in cpuPoints { self.cpuHistory.append(p) }
+        self.downloadHistory = RingBuffer<Double>(capacity: 60)
+        for p in downloadPoints { self.downloadHistory.append(p) }
+        self.uploadHistory = RingBuffer<Double>(capacity: 60)
+        for p in uploadPoints { self.uploadHistory.append(p) }
+    }
+    #endif
 }

@@ -8,6 +8,10 @@
   轻量级原生 macOS 状态栏助手 —— 实时监控 CPU、上下行网速与磁盘空间，并内置安全的 Xcode / Flutter 构建缓存清理工具。
 </p>
 
+<p align="center">
+  <img src="docs/monitor-screenshot.png" width="360" alt="NexBar 监控界面预览" />
+</p>
+
 ---
 
 ## 核心特性
