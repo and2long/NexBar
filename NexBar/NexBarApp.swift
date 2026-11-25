@@ -1,17 +1,12 @@
-//
-//  NexBarApp.swift
-//  NexBar
-//
-//  Created by Lilong Zhang on 2026/11/25.
-//
-
 import SwiftUI
 
 @main
 struct NexBarApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        Settings {
+            EmptyView()
         }
     }
 }
