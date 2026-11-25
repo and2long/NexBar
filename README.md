@@ -63,3 +63,9 @@ Tests/                    # 核心逻辑单元测试（格式化、采样、清�
 scripts/                  # 本地与 CI 共用的 DMG 打包脚本
 .github/workflows/        # GitHub Actions CI 与 DMG 自动发布工作流
 ```
+
+---
+
+## 开源协议
+
+本项目基于 [MIT License](LICENSE) 开源。
